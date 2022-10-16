@@ -1,9 +1,9 @@
-max_it = 500;
-tol = 10^-9;
+function x = C(ciA, vicA, b)
+    max_it = 10;
+    tol = 10^-9;
+    
+    % https://en.wikipedia.org/wiki/Conjugate_gradient_method
 
-% https://en.wikipedia.org/wiki/Conjugate_gradient_method
-
-function x = itlinsolc(ciA, vicA, b)
     d = size(ciA,2); % 2 <= d <= 50
     n = size(ciA,1); % 2 <= n <= 5000000
     % Zakładam, że ciA ma taki sam rozmiar jak vicA
@@ -30,6 +30,7 @@ function x = itlinsolc(ciA, vicA, b)
 
         x = x + alpha * p; % Aktualizacja
         r = r - alpha * Ap;
+        disp(norm(r, 1));
         if norm(r, 1) < tol % x jest już wystarczająco dobry
             return
         end
