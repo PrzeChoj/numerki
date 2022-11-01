@@ -3,7 +3,7 @@ function x = itlinsolr(riA, virA, b)
     max_it = 500;
     tol = 10^-9;
     
-    % Wzór z:
+    % Zmodyfikowany wzór z:
     % https://en.wikipedia.org/wiki/Gauss–Seidel_method#Program_to_solve_arbitrary_no._of_equations_using_Matlab
 
     d = size(riA,1); % 2 <= d <= 50
@@ -11,12 +11,14 @@ function x = itlinsolr(riA, virA, b)
     % Zakładam, że riA ma taki sam rozmiar jak virA
       % oraz, że length(b) == n
     x = zeros(n,1);
-    r = b; % r = b - Ax = b
+    r = b; % r = b - Ax = b - 0 = b
     if norm(r, 1) < tol
         return
     end
 
+    % pentla glowna
     for i = 1:max_it
+        % aktualizacja x
         new_x = b;
         A_przekontna = zeros(n,1);
         for j = 1:n
@@ -32,6 +34,7 @@ function x = itlinsolr(riA, virA, b)
         end
         x = new_x./A_przekontna; % dzielenie element po elemencie
         
+        % obliczenie bledu r
         % r = b - Ax:
         r = b;
         for j = 1:n
@@ -39,13 +42,15 @@ function x = itlinsolr(riA, virA, b)
                 r(riA(k,j)) = r(riA(k,j)) - virA(k,j) * x(j);
             end
         end
-        %disp(norm(r, 1)); % debugging mode
-        if norm(r, 1) < tol % x jest już wystarczająco dobry
+
+        %disp(norm(r, 1)); % debugging
+        
+        % czy x jest już wystarczająco dobry?
+        if norm(r, 1) < tol
             return
         end
     end
 
     % nie udało się zbiec :(
-
     x = zeros(n,1);
 end

@@ -11,25 +11,31 @@ function x = itlinsolc(ciA, vicA, b)
     % Zakładam, że ciA ma taki sam rozmiar jak vicA
       % oraz, że length(b) == n
     x = zeros(n,1);
-    r = b; % r = b - Ax
+    r = b; % r = b - Ax = b - 0 = b
     if norm(r, 1) < tol
         return
     end
 
+    % pentla glowna
     for i = 1:max_it
+        % aktualizacja x
         for j = 1:n
             new_x_j = b(j);
             for k = 1:d
                 if ciA(j,k) == j
                     Ajj = vicA(j,k);
                 else
-                    new_x_j = new_x_j - vicA(j,k) * x(ciA(j,k)); % gdy k < j, to bierzemy x z nowej iteracji; gdy k > j, to bierzemy x ze starej iteracji
+                    % gdy k < j, to bierzemy x z nowej iteracji
+                    % gdy k > j, to bierzemy x ze starej iteracji
+                    % To przyspiesza zbieznosc
+                    new_x_j = new_x_j - vicA(j,k) * x(ciA(j,k));
                 end
             end
             new_x_j = new_x_j / Ajj;
             x(j) = new_x_j;
         end
 
+        % obliczenie bledu r
         % r = b - Ax:
         r = b;
         for j = 1:n
@@ -37,13 +43,15 @@ function x = itlinsolc(ciA, vicA, b)
                 r(j) = r(j) - vicA(j,k) * x(ciA(j,k));
             end
         end
-        %disp(norm(r, 1)); % debugging mode
-        if norm(r, 1) < tol % x jest już wystarczająco dobry
+
+        %disp(norm(r, 1)); % debugging
+        
+        % czy x jest już wystarczająco dobry?
+        if norm(r, 1) < tol
             return
         end
     end
 
     % nie udało się zbiec :(
-
     x = zeros(n,1);
 end
