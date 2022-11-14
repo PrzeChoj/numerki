@@ -1,0 +1,14 @@
+Ustal sobie konkretne phi, tak żeby było dobrze
+
+
+
+1. Deterministyczny - Quasi-Monte Carlo
+2. Importance sampling za pomocą Gausa
+3. Uniform Sample Placement - jeśli wiemy, gdzie \phi(x,y) będzie dodatnie, to można odrzucić te obszary.
+4. Latin hypercube sampling - wydaje się ciekawe, ale kostka [0,1]x[0,1]
+
+
+Pokazać, że jak jest szybko upadająca, to działa słabo
+
+Źródła:
+https://www.ime.usp.br/~jmstern/wp-content/uploads/2020/04/EricVeach2.pdf
