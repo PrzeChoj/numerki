@@ -44,7 +44,7 @@ function x = itlinsolc(ciA, vicA, b)
             end
         end
 
-        %disp(norm(r, 1)); % debugging
+        disp(norm(r, 1)); % debugging
         
         % czy x jest już wystarczająco dobry?
         if norm(r, 1) < tol
