@@ -1,0 +1,14 @@
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/MonteCarlo')
+P1Z60_PCH_MonteCarlo(@sum, 10)
+
+switch nargin
+    case 1
+        a = 1;
+        maxit = 10000;
+        type = "basic";
+    case 2
+        maxit = 10000;
+        type = "basic";
+    case 3
+        type = "basic";
+end
