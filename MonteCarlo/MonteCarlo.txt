@@ -23,6 +23,6 @@ Losowe notatki:
 
 
 Pytania do Kellera:
-1. Czy mogę użyć losowania betarnd z Statistics and Machine Learning Toolbox?
+1. Czy mogę użyć losowania betarnd z Statistics and Machine Learning Toolbox? Odp. Średnio, lepiej napisz sam.
 2. Czy mogę wybrać sobie kwadrat? Moim zdaniem te przekształcenia przestrzeni są nieciwkawe. Jakbym myślał, że są ciekawe, to bym poszedł na CADCAM, a jestem na AI.
 3. Czy mogę zrobić oddzielną funkcję dla każdej metody? P1Z60_PCH_MonteCarlo będzie je wywoływać.
