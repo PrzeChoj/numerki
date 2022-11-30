@@ -50,5 +50,7 @@ switch type
         integral = basic_integrate(f, randPoints);
     case "quasiMC"
         integral = quasiMC_integrate(f, randPoints);
+    case "reimann"
+        integral = reimann_integrate(f, randPoints);
 
 end

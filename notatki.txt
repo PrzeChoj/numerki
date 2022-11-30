@@ -15,4 +15,9 @@ end
 
 
 
-f = @(x, y) x.^2 + 0*y
+my_f = @(x, y) x + y
+% integral = 1.00000
+randPoints = 20^2
+quasiMC_integrate(my_f, randPoints)
+basic_integrate(my_f, randPoints)
+reimann_integrate(my_f, randPoints)
