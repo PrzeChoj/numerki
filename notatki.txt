@@ -12,3 +12,7 @@ switch nargin
     case 3
         type = "basic";
 end
+
+
+
+f = @(x, y) x.^2 + 0*y

@@ -45,6 +45,10 @@ function [integral] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 %                          podstawie wstepnej estymacji za pomocą
 %                          dividePoints losowań w każdym fragmencie
 
-integral = 0;
+switch type
+    case "basic"
+        integral = basic_integrate(f, randPoints);
+    case "quasiMC"
+        integral = quasiMC_integrate(f, randPoints);
 
 end
