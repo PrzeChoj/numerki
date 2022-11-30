@@ -52,5 +52,16 @@ switch type
         integral = quasiMC_integrate(f, randPoints);
     case "reimann"
         integral = reimann_integrate(f, randPoints);
+    case "imporftanceSampling"
+        integral = imporftanceSampling_integrate(f, randPoints, ...
+                        params(1), params(2), params(3), params(4));
+    case "latinHypercube"
+        integral = latinHypercube_integrate(f, randPoints);
+    case "divideAndConquer"
+        if ~exist('params','var')
+            params = 10;
+        end
+        integral = divideAndConquer_integrate(f, randPoints, params(1));
+        
 
 end
