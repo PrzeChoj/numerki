@@ -71,5 +71,4 @@ switch type
         end
         integral = divideAndConquer_integrate(f, randPoints, params(1));
         
-
-end
+end % function

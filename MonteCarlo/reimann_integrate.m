@@ -7,4 +7,4 @@ fs = f(xs(1,:), xs(2,:));
 
 integral = sum(fs) / randPoints;
 
-end
+end % function

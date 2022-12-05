@@ -14,4 +14,4 @@ end
 
 integral = integral/N;
 
-end
+end % function

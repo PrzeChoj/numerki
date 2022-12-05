@@ -3,9 +3,9 @@ function [integral] = divideAndConquer_integrate_recurrent(f, ...
 % Przecałkuj wywołując rekurencyjnie siebie.
 % Całkuj na kwadracie [a, b] x [c, d]
 
-% Based on https://web.maths.unsw.edu.au/~zdravkobotev/variancereductionCorrection.pdf
+% https://web.maths.unsw.edu.au/~zdravkobotev/variancereductionCorrection.pdf
 
-my_eps = 0.01; % Ustabilizowanie dla przypadku, gdy var() = 0
+my_eps = 0.01; % Ustabilizowanie szczególenie dla przypadku, gdy var() = 0
 
 if randPoints == 0
     % No more running
@@ -27,28 +27,28 @@ elseif randPoints < 4 * n_var_est + 10
 else
     xs = rand(2,4*n_var_est);
 
-    % 1 to lewy dolny
+    % 1 to lewa dolna ćwiartka kwadratu [a,b]x[c,d]
     xs1(1,:) = xs(1,1:n_var_est) * (b-a)/2 + a;
     xs1(2,:) = xs(2,1:n_var_est) * (d-c)/2 + c;
     fs1 = f(xs1(1,:), xs1(2,:));
     oldEstimate1 = sum(fs1) / n_var_est * (b-a)/2 * (d-c)/2;
     s1 = std(fs1) + my_eps;
 
-    % 2 to prawy dolny
+    % 2 to prawa dolna ćwiartka kwadratu [a,b]x[c,d]
     xs2(1,:) = xs(1,(n_var_est+1):(2*n_var_est)) * (b-a)/2 + a + (b-a)/2;
     xs2(2,:) = xs(2,(n_var_est+1):(2*n_var_est)) * (d-c)/2 + c;
     fs2 = f(xs2(1,:), xs2(2,:));
     oldEstimate2 = sum(fs2) / n_var_est * (b-a)/2 * (d-c)/2;
     s2 = std(fs2) + my_eps;
 
-    % 3 to lewy górny
+    % 3 to lewa górna ćwiartka kwadratu [a,b]x[c,d]
     xs3(1,:) = xs(1,(2*n_var_est+1):(3*n_var_est)) * (b-a)/2 + a;
     xs3(2,:) = xs(2,(2*n_var_est+1):(3*n_var_est)) * (d-c)/2 + c + (d-c)/2;
     fs3 = f(xs3(1,:), xs3(2,:));
     oldEstimate3 = sum(fs3) / n_var_est * (b-a)/2 * (d-c)/2;
     s3 = std(fs3) + my_eps;
 
-    % 4 to prawy górny
+    % 4 to prawa górna ćwiartka kwadratu [a,b]x[c,d]
     xs4(1,:) = xs(1,(3*n_var_est+1):(4*n_var_est)) * (b-a)/2 + a + (b-a)/2;
     xs4(2,:) = xs(2,(3*n_var_est+1):(4*n_var_est)) * (d-c)/2 + c + (d-c)/2;
     fs4 = f(xs4(1,:), xs4(2,:));
@@ -63,7 +63,7 @@ else
     randPoints2 = floor(randPointsLeft * s2/sSum);
     randPoints3 = floor(randPointsLeft * s3/sSum);
     randPoints4 = floor(randPointsLeft * s4/sSum);
-    % Być może gubię, ale co najwyżej 4
+    % Być może gubię, ale co najwyżej 4 randPoints
 
     i1 = divideAndConquer_integrate_recurrent(f, randPoints1, ...
         n_var_est, a, b-(b-a)/2, c, d-(d-c)/2, oldEstimate1);

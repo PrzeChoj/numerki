@@ -10,4 +10,4 @@ g2 = betapdf(ys(2,:), alpha_2, beta_2);
 
 integral = sum(fs ./ g1 ./ g2) / randPoints;
 
-end
+end % function
