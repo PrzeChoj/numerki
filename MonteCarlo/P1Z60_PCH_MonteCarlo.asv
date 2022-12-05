@@ -19,10 +19,7 @@ function [integral] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 %                  dla type = "divideAndConquer":
 %                     liczba punktów użytych do estymacji wariancji
 %                     w każdym kroku przed podziałem (domyslenie 10)
-%                  dla type = "latinHypercube":
-%                     liczba K, czyli skala rozłożoności. Im większe K, tym
-%                     równiej rozłorzone są punkty na kwadracie
-%                     [0,1]x[0,1] (domyslenie 50)
+%                  dla type = "divideAndConquer":
 % 
 % Wyjscie:
 %   integral - estymowana wartosc calki
@@ -61,10 +58,7 @@ switch type
         integral = imporftanceSampling_integrate(f, randPoints, ...
                         params(1), params(2), params(3), params(4));
     case "latinHypercube"
-        if ~exist('params','var')
-            params = 50;
-        end
-        integral = latinHypercube_integrate(f, randPoints, params(1));
+        integral = latinHypercube_integrate(f, randPoints);
     case "divideAndConquer"
         if ~exist('params','var')
             params = 10;
