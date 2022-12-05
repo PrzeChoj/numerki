@@ -15,11 +15,15 @@ Testy:
 3. Przykład ze strony 93 Romaniuka. To jest nieskończona na EXPach, ale łatwo ją przyekształcić odwrotnym dla EXPa
 4. Pokazać zbieżność o(1/sqrt(n)) wykresem jak na wikipedii
 5. Jad dobrze całkują trójkąt? f(x,y) = 1I(x > y), albo f(x,y) = xy1I(x > y)?
+6. Divide and Conquer są dobre gdy druga pochodna jest bardzo duża. Np. my_f = @(x, y) x > y
+7. Importance Sampling jest dobre, gdy jest mała część, gdzie są duże wartości. Np. my_f = @(x, y) (x < 0.01) .* (y < 0.01), gdy params=[1, 100, 1, 100]
+8. Latin działa dobrze na funkcjach, które są bliskie sum(a_i * x_i).
 
 Losowe notatki:
 1. Przybliżając całkę metodami MC będziemy mieli odchylenie standardowe rzędu o(1/sqrt(n)) NIEZALEŻNIE OD WYMIARU d. "W przypadku deterministycznych metod numerycznych błąd ma zawsze postać n^(-a/d), gdzie a - pewna stała, a d - wymiar." ~ Maciej Romaniuk, Metody Monte Carlo, strona 93.
 2. Wolałbym zrobić oddzielne funkcje do każdej metody, bo potrzebują innych rzeczy - importance współczynników bety, inne liczby iteracji mniejszych
 3. W estymacji wariancji może być 0 - dodać 10^(-4)
+4. Importance Sampling dla params = [1,1,1,1] to to samo, co basic
 
 
 Pytania do Kellera:
