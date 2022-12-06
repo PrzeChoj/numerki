@@ -11,13 +11,14 @@ https://web.maths.unsw.edu.au/~zdravkobotev/variancereductionCorrection.pdf
 
 Testy:
 1. Pokazać, że jak f zeruje się bardzo w kwadracie, to masz problem
-2. Pokazać przykład jak całkę podwójną nieograniczoną przkształcasz na kwadrat [0,1]x[0,1] i obliczasz, np.  http://eczyt.bg.pw.edu.pl/han/ibuk/https/libra.ibuk.pl/reader/metody-monte-carlo-maciej-romaniuk-208270 (5.20)
-3. Przykład ze strony 93 Romaniuka. To jest nieskończona na EXPach, ale łatwo ją przyekształcić odwrotnym dla EXPa
-4. Pokazać zbieżność o(1/sqrt(n)) wykresem jak na wikipedii
-5. Jad dobrze całkują trójkąt? f(x,y) = 1I(x > y), albo f(x,y) = xy1I(x > y)?
-6. Divide and Conquer są dobre gdy druga pochodna jest bardzo duża. Np. my_f = @(x, y) x > y
-7. Importance Sampling jest dobre, gdy jest mała część, gdzie są duże wartości. Np. my_f = @(x, y) (x < 0.01) .* (y < 0.01), gdy params=[1, 100, 1, 100]
-8. Latin działa dobrze na funkcjach, które są bliskie sum(a_i * x_i). Np. my_f = @(x, y) (3+2*x+0.01*x.*x)+(5+4*y-0.04*y.*y)
+3. Jak dobrze całkują trójkąt? f(x,y) = 1I(x > y), albo f(x,y) = xy1I(x > y)?
+4. Divide and Conquer są dobre gdy druga pochodna jest bardzo duża. Np. my_f = @(x, y) x > y
+5. Importance Sampling jest dobre, gdy jest mała część, gdzie są duże wartości. Np. my_f = @(x, y) (x < 0.01) .* (y < 0.01), gdy params=[1, 100, 1, 100]
+6. Latin działa dobrze na funkcjach, które są bliskie sum(a_i * x_i). Np. my_f = @(x, y) (3+2*x+0.01*x.*x)+(5+4*y-0.04*y.*y)
+
+Wykresy:
+1. Zbieżność o(1/sqrt(n)) wykresem jak na wikipedii https://en.wikipedia.org/wiki/Monte_Carlo_integration
+2. Jakie metody użyłu jakiś punktów do estymacji
 
 Losowe notatki:
 1. Przybliżając całkę metodami MC będziemy mieli odchylenie standardowe rzędu o(1/sqrt(n)) NIEZALEŻNIE OD WYMIARU d. "W przypadku deterministycznych metod numerycznych błąd ma zawsze postać n^(-a/d), gdzie a - pewna stała, a d - wymiar." ~ Maciej Romaniuk, Metody Monte Carlo, strona 93.

@@ -3,7 +3,6 @@ function [] = test1()
 % prawdziwa wartość całki
 
 randPoints = 100;
-rng(1);
 
 my_f = @(x,y) y.*exp(x);
 integralAccurate = (exp(1)-1)/2;
@@ -17,16 +16,10 @@ disp("przecałkowanej na kwadracie [0,1]x[0,1].")
 disp("Teoretyczna wartość tej całki wynosi (e - 1)/2, czyli około " ...
     + integralAccurate + ".")
 disp(" ")
-disp("Wykonane zostaną testy dla każdego typu dla " + ...
+disp("Wykonane zostaną 3 testy dla każdego typu dla " + ...
     "100 wylosowanych punktów,")
-disp("oraz kolejne testy dla 1000 wylosowanych punktów.")
-disp("Porównane będą błędy oraz czas obliczeń.")
-disp("Niektóre metody nie są deterministyczne dlatego" + ...
-    "porównane zostaną wyniki z 3 wywołań.")
-disp("W ten sposób sprawdzona będzie wariancja wyniku.")
-disp(" ")
-
-disp("W celu reprodukowalności wniosków ustawiono ziarno losowości.")
+disp("oraz kolejne 3 testy dla 1000 wylosowanych punktów.")
+disp("P")
 disp(" ")
 
 disp("Kolejność algorytmów jest następująca:")
@@ -55,7 +48,7 @@ disp("Zauważyć można, że zdecydowanie najdłużej trawły obliczenia " + ...
 disp("Obserwacja ta nie dziwi, gdyż obliczenie to wymaga " + ...
     "wyznaczenia ciągu Faure, co jest zasobożerne.")
 input("");
-disp("Warto zwrócić uwagę na algorytmy deterministyczne " + ...
+disp("Warto zwrócić wuagę na algorytmy deterministyczne " + ...
     "(quasiMC oraz reimann), gdyż")
 disp("w każdym z trzech przebiegów dały one te same wyniki.")
 
@@ -75,21 +68,21 @@ my_time2 = my_time2 / 3;
 input("");
 
 disp("Dla 1000 punktów:")
-disp("Czas obliczeń (w milisekundach):")
-disp(my_time2 * 1000);
+disp("Czas obliczeń (w sekundach):")
+disp(my_time2);
 disp("Otrzymane błędy (bezwzględne od prawdziwej wartości całki):")
 disp(err2);
 
 disp("Testy dla większej liczby punktów " + ...
-    "potwierdzają wcześniejsze obserwacje.")
+    "potwierdza wcześniejsze obserwacje.")
 disp("Widzimy, że najgorzej poradziły sobie metody basic oraz " + ...
     "reimann, co nie dziwi, gdyż są to najprostrze metody MC.")
 disp(" ")
 disp("Warto wzrócić uwagę na czwartą kolumnę, która reprezentuje " + ...
     "Importance Sampling.")
 disp("Widzimy, że jej wyniki są lepsze od " + ...
-    "basic. Jest tak dlatego, że parapetry rozkładu beta zostały ")
-disp("dobrane tak, aby 'pasowały' do funkcji podcałkowej " + ...
-    "(geogebra.org/3d/fqytxuv7).")
+    "basic. Jest tak dlatego, że")
+disp("parapetry rozkładu beta zostały " + ...
+    "dobrane tak, aby 'pasowały' do funkcji podcałkowej.")
 
 end % function
