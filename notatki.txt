@@ -1,17 +1,7 @@
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/MonteCarlo')
-P1Z60_PCH_MonteCarlo(@sum, 10)
 
-switch nargin
-    case 1
-        a = 1;
-        maxit = 10000;
-        type = "basic";
-    case 2
-        maxit = 10000;
-        type = "basic";
-    case 3
-        type = "basic";
-end
+Zasady pisania kodu:
+http://pages.mini.pw.edu.pl/~kellerp/teaching/2022/mn2Lab/files/Estetyka.pdf
 
 
 
