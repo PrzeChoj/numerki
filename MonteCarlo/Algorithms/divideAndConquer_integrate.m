@@ -1,6 +1,6 @@
-function [integral] = divideAndConquer_integrate(f, randPoints, n_var_est)
+function [integral, points] = divideAndConquer_integrate(f, randPoints, n_var_est)
 
-integral = divideAndConquer_integrate_recurrent(f, ...
+[integral, points] = divideAndConquer_integrate_recurrent(f, ...
     randPoints, n_var_est, 0, 1, 0, 1);
 
 end % function
