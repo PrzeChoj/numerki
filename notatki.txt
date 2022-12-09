@@ -5,10 +5,12 @@ Zasady pisania kodu:
 http://pages.mini.pw.edu.pl/~kellerp/teaching/2022/mn2Lab/files/Estetyka.pdf
 
 
-
+my_f = @(x, y) (x < y)
 my_f = @(x, y) x + y
 % integral = 1.00000
 randPoints = 20^2
-quasiMC_integrate(my_f, randPoints)
-basic_integrate(my_f, randPoints)
-reimann_integrate(my_f, randPoints)
+[integral, points] = quasiMC_integrate(my_f, randPoints)
+[integral, points] = basic_integrate(my_f, randPoints)
+[integral, points] = reimann_integrate(my_f, randPoints)
+
+scatter(points(1,:), points(2,:))
