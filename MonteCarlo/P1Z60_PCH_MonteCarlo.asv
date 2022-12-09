@@ -26,7 +26,7 @@ function [integral, points] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 % 
 % Wyjscie:
 %   integral - estymowana wartosc calki
-%   points   - lista punktów użytych do estymacji całki
+%   points   - lista punktów użytychdo estymacji całki
 % 
 % Możliwe wartości parametru type:
 %  "basic"               - losowanie randPoints liczb jednostajnie z
@@ -53,23 +53,23 @@ function [integral, points] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 
 switch type
     case "basic"
-        [integral, points] = basic_integrate(f, randPoints);
+        integral = basic_integrate(f, randPoints);
     case "quasiMC"
-        [integral, points] = quasiMC_integrate(f, randPoints);
+        integral = quasiMC_integrate(f, randPoints);
     case "reimann"
-        [integral, points] = reimann_integrate(f, randPoints);
+        integral = reimann_integrate(f, randPoints);
     case "imporftanceSampling"
-        [integral, points] = imporftanceSampling_integrate(f, ...
-            randPoints, params(1), params(2), params(3), params(4));
+        integral = imporftanceSampling_integrate(f, randPoints, ...
+                        params(1), params(2), params(3), params(4));
     case "latinHypercube"
         if ~exist('params','var')
             params = 50;
         end
-        [integral, points] = latinHypercube_integrate(f, randPoints, params(1));
+        integral = latinHypercube_integrate(f, randPoints, params(1));
     case "divideAndConquer"
         if ~exist('params','var')
             params = 10;
         end
-        [integral, points] = divideAndConquer_integrate(f, randPoints, params(1));
+        integral = divideAndConquer_integrate(f, randPoints, params(1));
         
 end % function
