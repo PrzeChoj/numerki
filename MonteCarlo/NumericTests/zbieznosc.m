@@ -8,7 +8,7 @@ i_s = zeros(length(ns), 1);
 errors = zeros(length(ns), 1);
 
 for i = 1:length(ns)
-    [i_s(i), ~] = P1Z60_PCH_MonteCarlo(my_f, ns(i), "basic");
+    i_s(i) = P1Z60_PCH_MonteCarlo(my_f, ns(i), "basic");
     errors(i) = abs(i_s(i));
 end
 

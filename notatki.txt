@@ -1,5 +1,7 @@
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/MonteCarlo/Algorithms')
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/MonteCarlo/tests')
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/MonteCarlo/NumericTests')
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/MonteCarlo')
 
 Zasady pisania kodu:
 http://pages.mini.pw.edu.pl/~kellerp/teaching/2022/mn2Lab/files/Estetyka.pdf

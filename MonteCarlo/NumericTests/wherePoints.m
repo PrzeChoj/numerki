@@ -1,7 +1,7 @@
 rng(1);
 
-% łamię regułę Do Not Repeat Yourself
-% Ale mogę, bo to tylko generowanie obrazka
+% lamie regułe Do Not Repeat Yourself
+% Ale moge, bo to tylko generowanie obrazka
 
 my_f = @(x,y) 4*(((x-0.5).*(x-0.5) + (y-0.5).*(y-0.5)) < 0.25);
 % Prawdziwa wartość całki to pi
