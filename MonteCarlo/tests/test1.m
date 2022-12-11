@@ -21,9 +21,9 @@ disp("Wykonane zostaną testy dla każdego typu dla " + ...
     "100 wylosowanych punktów,")
 disp("oraz kolejne testy dla 1000 wylosowanych punktów.")
 disp("Porównane będą błędy oraz czas obliczeń.")
-disp("Niektóre metody nie są deterministyczne dlatego" + ...
+disp("Niektóre metody nie są deterministyczne dlatego " + ...
     "porównane zostaną wyniki z 3 wywołań.")
-disp("W ten sposób sprawdzona będzie wariancja wyniku.")
+disp("W ten sposób sprawdzona będzie niepewność wyniku.")
 disp(" ")
 
 disp("W celu reprodukowalności wniosków ustawiono ziarno losowości.")
