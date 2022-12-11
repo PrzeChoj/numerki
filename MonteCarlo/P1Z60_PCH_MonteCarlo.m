@@ -1,27 +1,27 @@
 function [integral, points] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 % Projekt 1, zadanie 60
-% Przemyslaw Chojecki, 298814
+% Adam Przemyslaw Chojecki, 298814
 % 
-% Obliczanie całki podwójnej metodami
+% Obliczanie calki podwojnej metodami
 % Monte Carlo na kwadracie [0,1]x[0,1].
 % 
 % Wejscie:
 %   f            - uchwyt do funkcji 2 zmiennych, ktora bedzie calkowana
 %   randPoints   - liczba iteracji metody (domyslenie 10000)
-%   type         - rodzaj całkowania (opisane ponizej);
+%   type         - rodzaj calkowania (opisane ponizej);
 %                  (domyslenie "basic"); jedno z: "basic",
 %                  "quasiMC", "reimann", "imporftanceSampling",
 %                  "latinHypercube", "divideAndConquer"
 %   params       - dla type = "imporftanceSampling":
-%                     wektor długości 4 reprezentujący parametry rozkładu
+%                     wektor dlugosci 4 reprezentujący parametry rozkladu
 %                     Beta kolejno (alpha_1, beta_1, alpha_2, beta_2)
 %                     (domyslnie (1,1,1,1))
 %                  dla type = "divideAndConquer":
 %                     liczba punktów użytych do estymacji wariancji
 %                     w każdym kroku przed podziałem (domyslenie 10)
 %                  dla type = "latinHypercube":
-%                     liczba K, czyli skala rozłożoności. Im większe K, tym
-%                     równiej rozłorzone są punkty na kwadracie
+%                     liczba K, czyli skala rozlozonosci. Im większe K,
+%                     tym rowniej rozlorzone są punkty na kwadracie
 %                     [0,1]x[0,1] (domyslenie 50)
 % 
 % Wyjscie:
@@ -32,9 +32,9 @@ function [integral, points] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 %  "basic"               - losowanie randPoints liczb jednostajnie z
 %                          dziedziny i zastosowanie wzoru
 %                          integral \approx (sum(f(x_i)))/randPoints
-%  "quasiMC"             - uzycie deterministycznego ciągu Faure zamiast
+%  "quasiMC"             - uzycie deterministycznego ciagu Faure zamiast
 %                          losowanych jednostajnie
-%  "reimann"             - deterministyczne przybliżenie
+%  "reimann"             - deterministyczne przyblizenie
 %                          siatką (i/n, j/n)_(i,j), gdzie
 %                          n = floor(sqrt(randPoints))
 %  "imporftanceSampling" - losowanie punktów z kwadratu [0,1]x[0,1]

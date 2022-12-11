@@ -1,6 +1,9 @@
 function [] = test1()
-% Podstawowe testy całkowania dla pryzkładowej funkcji, której znana jest
-% prawdziwa wartość całki
+% Projekt 1, zadanie 60
+% Adam Przemyslaw Chojecki, 298814
+%
+% Podstawowe testy calkowania dla pryzkladowej funkcji, ktorej znana jest
+% prawdziwa wartosc calki
 
 randPoints = 100;
 rng(1);
@@ -10,26 +13,26 @@ integralAccurate = (exp(1)-1)/2;
 my_time1 = zeros(1,6);
 err1 = zeros(3,6);
 
-disp("Test sprawdza poprawność zaimplementowanych algorytmów " + ...
-    "całkowania")
-disp("metodami Monte Carlo na przykładowej funkcji f(x,y) = y*exp(x)")
-disp("przecałkowanej na kwadracie [0,1]x[0,1].")
-disp("Teoretyczna wartość tej całki wynosi (e - 1)/2, czyli około " ...
+disp("Test sprawdza poprawnosc zaimplementowanych algorytmow " + ...
+    "calkowania")
+disp("metodami Monte Carlo na przykladowej funkcji f(x,y) = y*exp(x)")
+disp("przecalkowanej na kwadracie [0,1]x[0,1].")
+disp("Teoretyczna wartosc tej calki wynosi (e - 1)/2, czyli okolo " ...
     + integralAccurate + ".")
 disp(" ")
-disp("Wykonane zostaną testy dla każdego typu dla " + ...
-    "100 wylosowanych punktów,")
-disp("oraz kolejne testy dla 1000 wylosowanych punktów.")
-disp("Porównane będą błędy oraz czas obliczeń.")
-disp("Niektóre metody nie są deterministyczne dlatego " + ...
-    "porównane zostaną wyniki z 3 wywołań.")
-disp("W ten sposób sprawdzona będzie niepewność wyniku.")
+disp("Wykonane zostana testy dla kazdego typu dla " + ...
+    "100 wylosowanych punktow,")
+disp("oraz kolejne testy dla 1000 wylosowanych punktow.")
+disp("Porownane beda bledy oraz czas obliczen.")
+disp("Niektore metody nie sa deterministyczne dlatego " + ...
+    "porownane zostana wyniki z 3 wywolan.")
+disp("W ten sposob sprawdzona bedzie niepewnosc wyniku.")
 disp(" ")
 
-disp("W celu reprodukowalności wniosków ustawiono ziarno losowości.")
+disp("W celu reprodukowalnosci wnioskow ustawiono ziarno losowosci.")
 disp(" ")
 
-disp("Kolejność algorytmów jest następująca:")
+disp("Kolejnosc algorytmow jest nastepujaca:")
 disp(["basic", "quasiMC", "reimann", "imporftanceSampling", ...
     "latin Hypercube", "divide And Conquer"])
 
@@ -43,21 +46,21 @@ my_time1 = my_time1 / 3;
 
 input("");
 
-disp("Dla 100 punktów:")
-disp("Czas obliczeń (w milisekundach):")
+disp("Dla 100 punktow:")
+disp("Czas obliczen (w milisekundach):")
 disp(my_time1 * 1000);
-disp("Otrzymane błędy (bezwzględne od prawdziwej wartości całki):")
+disp("Otrzymane bledy (bezwzgledne od prawdziwej wartosci calki):")
 disp(err1);
 
 disp(" ")
-disp("Zauważyć można, że zdecydowanie najdłużej trawły obliczenia " + ...
+disp("Zauwazyc mozna, ze zdecydowanie najdluzej trawly obliczenia " + ...
     "dla quasiMC.")
-disp("Obserwacja ta nie dziwi, gdyż obliczenie to wymaga " + ...
-    "wyznaczenia ciągu Faure, co jest zasobożerne.")
+disp("Obserwacja ta nie dziwi, gdyz obliczenie to wymaga " + ...
+    "wyznaczenia ciagu Faure, co jest zasobozerne.")
 input("");
-disp("Warto zwrócić uwagę na algorytmy deterministyczne " + ...
-    "(quasiMC oraz reimann), gdyż")
-disp("w każdym z trzech przebiegów dały one te same wyniki.")
+disp("Warto zwrocic uwage na algorytmy deterministyczne " + ...
+    "(quasiMC oraz reimann), gdyz")
+disp("w kazdym z trzech przebiegow daly one te same wyniki.")
 
 my_time2 = zeros(1,6);
 err2 = zeros(3,6);
@@ -74,22 +77,22 @@ my_time2 = my_time2 / 3;
 
 input("");
 
-disp("Dla 1000 punktów:")
-disp("Czas obliczeń (w milisekundach):")
+disp("Dla 1000 punktow:")
+disp("Czas obliczen (w milisekundach):")
 disp(my_time2 * 1000);
-disp("Otrzymane błędy (bezwzględne od prawdziwej wartości całki):")
+disp("Otrzymane bledy (bezwzgledne od prawdziwej wartosci calki):")
 disp(err2);
 
-disp("Testy dla większej liczby punktów " + ...
-    "potwierdzają wcześniejsze obserwacje.")
-disp("Widzimy, że najgorzej poradziły sobie metody basic oraz " + ...
-    "reimann, co nie dziwi, gdyż są to najprostrze metody MC.")
+disp("Testy dla wiekszej liczby punktow " + ...
+    "potwierdzaja wczesniejsze obserwacje.")
+disp("Widzimy, ze najgorzej poradzily sobie metody basic oraz " + ...
+    "reimann, co nie dziwi, gdyz sa to najprostrze metody MC.")
 disp(" ")
-disp("Warto wzrócić uwagę na czwartą kolumnę, która reprezentuje " + ...
+disp("Warto wzrocic uwage na czwarta kolumne, ktora reprezentuje " + ...
     "Importance Sampling.")
-disp("Widzimy, że jej wyniki są lepsze od " + ...
-    "basic. Jest tak dlatego, że parapetry rozkładu beta zostały ")
-disp("dobrane tak, aby 'pasowały' do funkcji podcałkowej " + ...
+disp("Widzimy, ze jej wyniki sa lepsze od " + ...
+    "basic. Jest tak dlatego, ze parapetry rozkladu beta zostaly ")
+disp("dobrane tak, aby 'pasowaly' do funkcji podcalkowej " + ...
     "(geogebra.org/3d/fqytxuv7).")
 
 end % function

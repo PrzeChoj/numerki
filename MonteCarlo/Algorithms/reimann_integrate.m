@@ -1,4 +1,9 @@
 function [integral, points] = reimann_integrate(f, randPoints)
+% Projekt 1, zadanie 60
+% Adam Przemyslaw Chojecki, 298814
+% 
+% Oblicza wartosc calki zgodnie z opisem w funkcji P1Z60_PCH_MonteCarlo.
+% Rownierz i tam opisane sa dane wejsciowe i wyjsciowe.
 
 n = floor(sqrt(randPoints));
 
