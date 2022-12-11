@@ -1,5 +1,5 @@
 function [integral, points] = divideAndConquer_integrate_recurrent(f, ...
-    randPoints, n_var_est, a, b, c, d, oldEstimate)
+    randPoints, n_var_est, a, b, c, d)
 % Projekt 1, zadanie 60
 % Adam Przemyslaw Chojecki, 298814
 %
@@ -18,7 +18,7 @@ my_eps = 0.01; % Ustabilizowanie szczegolenie dla przypadku, gdy var() = 0
 
 if randPoints == 0
     % No more running
-    integral = oldEstimate;
+    integral = 0; % i tak to nie bedzie brane pod uwage wyzej
     points = zeros(2,0);
 elseif randPoints < 4 * n_var_est + 10
     % Bez rekurencji, po prostu policz pozostale punkty
@@ -30,11 +30,6 @@ elseif randPoints < 4 * n_var_est + 10
     points = xs;
 
     integral = sum(fs) / randPoints * (b-a) * (d-c);
-    if exist('oldEstimate','var')
-        % Uzyj starej wartosci estymacji
-        integral = (integral * randPoints + oldEstimate * n_var_est) / ...
-            (randPoints + n_var_est);
-    end
 else
     xs = rand(2,4*n_var_est);
     points = zeros(2, randPoints);
@@ -87,13 +82,13 @@ else
     
     % Rekurencyjne wywolanie:
     [i1, points1] = divideAndConquer_integrate_recurrent(f, ...
-        randPoints1, n_var_est, a, b-(b-a)/2, c, d-(d-c)/2, oldEstimate1);
+        randPoints1, n_var_est, a, b-(b-a)/2, c, d-(d-c)/2);
     [i2, points2] = divideAndConquer_integrate_recurrent(f, ...
-        randPoints2, n_var_est, a+(b-a)/2, b, c, d-(d-c)/2, oldEstimate2);
+        randPoints2, n_var_est, a+(b-a)/2, b, c, d-(d-c)/2);
     [i3, points3] = divideAndConquer_integrate_recurrent(f, ...
-        randPoints3, n_var_est, a, b-(b-a)/2, c+(d-c)/2, d, oldEstimate3);
+        randPoints3, n_var_est, a, b-(b-a)/2, c+(d-c)/2, d);
     [i4, points4] = divideAndConquer_integrate_recurrent(f, ...
-        randPoints4, n_var_est, a+(b-a)/2, b, c+(d-c)/2, d, oldEstimate4);
+        randPoints4, n_var_est, a+(b-a)/2, b, c+(d-c)/2, d);
 
     % Polaczenie wynikow rekurencyjnych:
     cumrandPoints = cumsum([randPoints1, randPoints2, ...
@@ -107,17 +102,15 @@ else
     points(:, (4*n_var_est + cumrandPoints(3) + 1):(4*n_var_est + ...
         cumrandPoints(4))) = points4;
 
-    integral1 = i1 * randPoints1;
-    integral2 = i2 * randPoints2;
-    integral3 = i3 * randPoints3;
-    integral4 = i4 * randPoints4;
+    integral1 = (i1 * randPoints1 + ...
+        oldEstimate1 * n_var_est) / (randPoints1 + n_var_est);
+    integral2 = (i2 * randPoints2 + ...
+        oldEstimate2 * n_var_est) / (randPoints2 + n_var_est);
+    integral3 = (i3 * randPoints3 + ...
+        oldEstimate3 * n_var_est) / (randPoints3 + n_var_est);
+    integral4 = (i4 * randPoints4 + ...
+        oldEstimate4 * n_var_est) / (randPoints4 + n_var_est);
 
     integral = integral1+integral2+integral3+integral4;
-
-    if exist('oldEstimate','var')
-        % Uzyj starej wartosci estymacji
-        integral = (integral * cumrandPoints(4) + ...
-            oldEstimate * n_var_est) / (cumrandPoints(4) + n_var_est);
-    end
 
 end % function
