@@ -2,15 +2,15 @@ function [integral, points] = divideAndConquer_integrate_recurrent(f, ...
     randPoints, n_var_est, a, b, c, d, oldEstimate)
 % Projekt 1, zadanie 60
 % Adam Przemyslaw Chojecki, 298814
-% 
+%
 % Oblicza wartosc calki zgodnie z opisem w funkcji P1Z60_PCH_MonteCarlo.
 % Rownierz i tam opisane sa dane wyjsciowe i czesc wejsciowych.
 %
 % oldEstimate to parametr przekazywany w rekurencji mowiacy o
 % wczesniej policzonym estymatorze calki na danym kwadracie
-% 
+%
 % Przecalkuj na kwadracie [a, b] x [c, d] wywolujac rekurencyjnie siebie.
-% 
+%
 % Algorytm na podstawie artykulu
 % https://web.maths.unsw.edu.au/~zdravkobotev/variancereductionCorrection.pdf
 
@@ -92,7 +92,8 @@ else
     [i4, points4] = divideAndConquer_integrate_recurrent(f, ...
         randPoints4, n_var_est, a+(b-a)/2, b, c+(d-c)/2, d, oldEstimate4);
 
-    points(:, (4*n_var_est + 1):(4*n_var_est + cumrandPoints(1))) = points1;
+    points(:, (4*n_var_est + 1):(4*n_var_est + ...
+        cumrandPoints(1))) = points1;
     points(:, (4*n_var_est + cumrandPoints(1) + 1):(4*n_var_est + ...
         cumrandPoints(2))) = points2;
     points(:, (4*n_var_est + cumrandPoints(2) + 1):(4*n_var_est + ...

@@ -1,7 +1,7 @@
 function [err, my_time] = test1GetError(my_f, randPoints, integralAccurate)
 % Projekt 1, zadanie 60
 % Adam Przemyslaw Chojecki, 298814
-% 
+%
 % Funkcja uzywana przez funkcje test1() do
 % otrzymania wynikow, ktore tamta omawia.
 

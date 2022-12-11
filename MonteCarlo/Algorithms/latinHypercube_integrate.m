@@ -1,14 +1,14 @@
 function [integral, points] = latinHypercube_integrate(f, randPoints, K)
 % Projekt 1, zadanie 60
 % Adam Przemyslaw Chojecki, 298814
-% 
+%
 % Oblicza wartosc calki zgodnie z opisem w funkcji P1Z60_PCH_MonteCarlo.
 % Rownierz i tam opisane sa dane wejsciowe i wyjsciowe.
 %
 % Parametr wejsciowy K mowi jak wiele punktow obok siebie
 % bedzie skorelowanych. Im wartosc wieksza, tym punkty
 % beda rowniej rozlozone na kwadracie [0,1]x[0,1].
-% 
+%
 % Na podstawie strony 361 z ksiazki Handbook of MC methods autorstwa
 % Dirk P. Kroese, Thomas Taimre, oraz Zdravko I. Botev
 

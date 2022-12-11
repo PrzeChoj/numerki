@@ -1,10 +1,10 @@
 function [integral, points] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 % Projekt 1, zadanie 60
 % Adam Przemyslaw Chojecki, 298814
-% 
+%
 % Obliczanie calki podwojnej metodami
 % Monte Carlo na kwadracie [0,1]x[0,1].
-% 
+%
 % Wejscie:
 %   f            - uchwyt do funkcji 2 zmiennych, ktora bedzie calkowana
 %   randPoints   - liczba iteracji metody (domyslenie 10000)
@@ -23,11 +23,11 @@ function [integral, points] = P1Z60_PCH_MonteCarlo(f, randPoints, type, params)
 %                     liczba K, czyli skala rozlozonosci. Im większe K,
 %                     tym rowniej rozlorzone są punkty na kwadracie
 %                     [0,1]x[0,1] (domyslenie 50)
-% 
+%
 % Wyjscie:
 %   integral - estymowana wartosc calki
 %   points   - lista punktów użytych do estymacji całki
-% 
+%
 % Możliwe wartości parametru type:
 %  "basic"               - losowanie randPoints liczb jednostajnie z
 %                          dziedziny i zastosowanie wzoru
@@ -71,5 +71,5 @@ switch type
             params = 10;
         end
         [integral, points] = divideAndConquer_integrate(f, randPoints, params(1));
-        
+
 end % function
