@@ -1,0 +1,40 @@
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues')
+
+Źródła:
+1. https://en.wikipedia.org/wiki/Hessenberg_matrix
+2. https://en.wikipedia.org/wiki/Givens_rotation - kod w MATLABie do mnozenia
+3. Zastosowanie Givens do QR https://www.youtube.com/watch?v=MxZy0LLEDLY
+4. http://pages.mini.pw.edu.pl/~wrobeli/PWMN2_zima_2022-23/mn2_pliki/PKeller_Skrypt_MN2.pdf - strona 45
+5. Mniej więcej to, co ja mam zrobić, ale w Pythonie https://www.andreinc.net/2021/01/25/computing-eigenvalues-and-eigenvectors-using-qr-decomposition
+6. Od Kellera: D. Kincaid, W. Cheney, "Numerical Analysis", "Chapter 5.5 — The QR Algorithm ..."
+
+Uwagi:
+1. Ty masz zespolone, czyli s będzie sprzężony. W notatkach z wykładu u Kellera jest to opisane.
+2. qr_Givens będzie w czasie o(n^2)
+4. Nie tylko a_{n, n-1}, ale cały wiersz musi być wystarczająco małe. Może warto cały sprawdzać, a nie tylko ten element?
+5. Nie "pamiętać" macierzy Givensa. Trzba jakoś inaczej zapisywać jakie one są. Trzeba jakies swoje mnożenie macierzy napisać.
+
+Pytania do Kellera:
+1. W poleceniu powiedziane coś jest na temat "ucinania" macierzy. Czy to znaczy, że mam obliczyć jedną wartość własną na raz? Czy jednak wszystkie na raz?
+2. Czy mogę założyć, że z macierzą 2x2, to znaczy, że wartości własne będą zaspolone? W skrypcie było, że to sa po prostu bliskie co do modułu...
+3. Jak zapisywać to Q śmieszne?
+4. Czy "rozsądny czas" z końca polecenia odnosi się do całości obliczeń, czy do jednej iteracji?
+5. Czy domyślne dałem ok?
+6. Jakiś pomysł na to sprawdzanie całego wiersza, a nie tylko n-tego elementu?
+
+
+
+
+
+EXP:
+A = [1,4,5; 4,1,4; 0,4,1]
+A_k = A;
+
+for k = 1:1000
+    [Q, R] = qr(A_k);
+    A_k = R * Q;
+end
+
+eig(A)
+A_k
+eig(A_k(2:3,2:3))
