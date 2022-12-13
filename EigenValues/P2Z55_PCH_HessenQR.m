@@ -1,4 +1,4 @@
-function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_a, eps_zesp, max_iter)
+function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_1, eps_2, max_iter)
 % Projekt 2, zadanie 55
 % Adam Przemyslaw Chojecki, 298814
 %
@@ -13,36 +13,42 @@ function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_a, eps_zesp, max_iter)
 %
 % Wejscie:
 %   A            - macierz Hessenberga
-%   eps_a        - tolerancja na akceptacje rzeczywistej wartosci wlasnej,
-%                  domyslnie 10^-10
-%   eps_zesp     - tolerancja na akceptacje zespolonej wartosci wlasnej,
-%                  domyslnie 10^-10
+%   eps_1        - tolerancja na akceptacje pojedynczej wartosci wlasnej,
+%                  domyslnie 10^{-10}
+%   eps_2        - tolerancja na akceptacje 2 bliskich co do modułu
+%                  wartosci wlasnych, domyslnie 10^{-10}
 %   max_iter     - maksymalna liczba iteracji, po ktorej przekroczeniu
 %                  obliczenia zostana przerwane
 %                  domyslnie 1000
 %
 % Wyjscie:
-%   w_wlasne - wektor wektorow wlasnych macierzy A
+%   w_wlasne - wektor wartosci wlasnych macierzy A
 %
 % Pseudokod algorytmu:
 %   1. Macierz A_1 = A jest postaci Hessenberga
-%   2. n = size(A, 1); w_wlasne = zeros(1,n)
-%   3. For k = 1:max_iter
+%   2. n = size(A, 1); w_wlasne = zeros(1,n); k = 1
+%   3. while k <= max_iter
 %       a) Macierz A_k jest postaci Hessenberga
 %       b) [Q, R] = qr_Givens(A_k)
-%       c) A_{k+1} = R * Q
-%       d) Jesli |A_{k+1}(n,n-1)| < eps_a:
-%           * w_wlasne(n) = A_{k+1}(n,n)
-%           * n = n-1 % jesli n == 0, koniec
-%           * A_{k+1} = A_{k+1}(1:n,1:n)         % albo to?
-%           * A_{1} = A_{k+1}(1:n,1:n); k = 1;   % albo to?
-%       e) Jesli |A_{k+1}(n-1,n-2)| < eps_zesp:
-%           * w_wlasne(n-1, n) = my_eigen(A_{k+1}(n-1:n,n-1:n)) % to beda
-%                                                                 zespolone
-%           * n = n-2 % jesli n == 0, koniec
-%           * A_{k+1} = A_{k+1}(1:n,1:n)         % albo to?
-%           * A_{1} = A_{k+1}(1:n,1:n); k = 1;   % albo to?
-%   4. Teraz w_wlasne to wektor wartosci wlasnych macierzy A
+%       c) k = k + 1
+%       d) A_{k} = iloczyn(R, Q)
+%       e) Jesli |A_{k}(n,n-1)| < eps_1:
+%           * w_wlasne(n) = A_{k}(n,n)
+%           * A_{1} = A_{k}(1:n,1:n)
+%           * n = n-1
+%           * jesli n == 2, przejdź do 5
+%           * k = 1
+%       f) Jesli |A_{k}(n-1,n-2)| < eps_2 * |A_{k}(n,n-1)|:
+%           * w_wlasne(n-1, n) = my_eigen(A_{k}(n-1:n,n-1:n))
+%           * A_{1} = A_{k}(1:n,1:n)
+%           * n = n-2
+%           * jesli n == 1 albo n == 2, przejdź do 5
+%           * k = 1
+%   4. Jeśli k == max_iter, zwroc w_wlasne(n+1, size(A, 1)),
+%       ta czyli czesc wartosci wlasnych, ktore udalo sie znalesc
+%   5. Teraz n == 1 albo n == 2
+%   6. w_wlasne(n-1, n) = my_eigen(A_{1}) albo w_wlasne(n) = A_{1}
+%   7. Teraz w_wlasne to wektor wartosci wlasnych macierzy A
 % 
 % Nalezy oczywiscie zaznaczyc, ze funkcja qr_Givens z punktu 3b nie bedzie
 %   zwracac macierzy Q jako obiekt "matrix" w MATLABie, tylko w innej,
