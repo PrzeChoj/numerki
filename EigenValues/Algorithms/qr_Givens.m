@@ -20,12 +20,4 @@ end
 
 R = H;
 
-for k = 1:(n-1) % Loop applying the back multiplication
-    [ H(1:k+1,k),H(1:k+1,k+1) ] = apply_givens_rotation( c(k), conj(s(k)),H(1:k+1,k),H(1:k+1,k+1) );
-    [ Q(1:n,k),Q(1:n,k+1) ] = apply_givens_rotation( c(k),conj(s(k)),Q(1:n,k),Q(1:n,k+1) );
-end
-
-disp(Q);
-disp(H);
-
 end

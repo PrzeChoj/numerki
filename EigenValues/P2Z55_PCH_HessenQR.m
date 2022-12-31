@@ -34,14 +34,14 @@ function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_1, eps_2, max_iter)
 %       d) A_{k} = iloczyn(R, c, s)
 %       e) Jesli |A_{k}(n,n-1)| < eps_1 * norm(A):
 %           * w_wlasne(n) = A_{k}(n,n)
-%           * A_{1} = A_{k}(1:n,1:n)
 %           * n = n-1
+%           * A_{1} = A_{k}(1:n,1:n)
 %           * jesli n == 2, przejdź do 5
 %           * k = 1
 %       f) Jesli |A_{k}(n-1,n-2)| < eps_2 * |A_{k}(n,n-1)|:
 %           * w_wlasne(n-1, n) = my_eigen(A_{k}(n-1:n,n-1:n))
-%           * A_{1} = A_{k}(1:n,1:n)
 %           * n = n-2
+%           * A_{1} = A_{k}(1:n,1:n)
 %           * jesli n == 1 albo n == 2, przejdź do 5
 %           * k = 1
 %   4. Jeśli k == max_iter, zwroc w_wlasne(1, (n+1):size(A, 1)),
@@ -60,5 +60,39 @@ function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_1, eps_2, max_iter)
 
 n = size(A, 1);
 w_wlasne = zeros(1, n);
+k = 1;
+
+A_k = A;
+norm_A = norm(A);
+
+while k <= max_iter && n > 2
+    [c, s, R] = qr_Givens(A_k);
+    k = k + 1;
+    A_k = iloczyn(R, c, s);
+
+    if abs(A_k(n, n-1)) < eps_1 * norm_A
+        w_wlasne(n) = A_k(n,n);
+        n = n-1;
+        A_k = A_k(1:n,1:n);
+        k = 1;
+    elseif abs(A_k(n-1,n-2)) < eps_2 * abs(A_k(n,n-1))
+        w_wlasne(n-1, n) = my_eigen(A_k(n-1:n,n-1:n));
+        n = n-2;
+        A_k = A_k(1:n,1:n);
+        k = 1;
+    end
+end
+
+if n == 2
+    w_wlasne(1:2) = my_eigen(A_k);
+elseif n == 1
+    w_wlasne(1) = my_eigen(1,1);
+end
 
 end % function
+
+
+
+
+
+
