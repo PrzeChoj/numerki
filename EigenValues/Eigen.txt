@@ -1,4 +1,5 @@
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues')
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues/Algorithms')
 
 Źródła:
 1. https://en.wikipedia.org/wiki/Hessenberg_matrix
@@ -7,6 +8,8 @@ addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues')
 4. http://pages.mini.pw.edu.pl/~wrobeli/PWMN2_zima_2022-23/mn2_pliki/PKeller_Skrypt_MN2.pdf - strona 45
 5. Mniej więcej to, co ja mam zrobić, ale w Pythonie https://www.andreinc.net/2021/01/25/computing-eigenvalues-and-eigenvectors-using-qr-decomposition
 6. Od Kellera: D. Kincaid, W. Cheney, "Numerical Analysis", "Chapter 5.5 — The QR Algorithm ..."
+7. https://www3.math.tu-berlin.de/Vorlesungen/SoSe11/NumMath2/Materials/qr__iteration_eng.pdf - pseudokod ten co mam zrobić
+8. https://addi.ehu.es/bitstream/handle/10810/26427/TFG_Erana_Robles_Gorka.pdf?sequence=1 - na stronie 45 pisze, że jedne c i s powinny być sprzężone
 
 Uwagi:
 1. Ty masz zespolone, czyli s będzie sprzężony. W notatkach z wykładu u Kellera jest to opisane.
