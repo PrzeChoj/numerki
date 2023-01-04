@@ -1,4 +1,4 @@
-function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_1, eps_2, max_iter)
+function [w_wlasne] = P2Z55_PCH_HessenQR(A, max_iter, eps_1, eps_2)
 % Projekt 2, zadanie 55
 % Adam Przemyslaw Chojecki, 298814
 %
@@ -13,13 +13,13 @@ function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_1, eps_2, max_iter)
 %
 % Wejscie:
 %   A            - macierz Hessenberga
+%   max_iter     - maksymalna liczba iteracji, po ktorej przekroczeniu
+%                  obliczenia zostana przerwane,
+%                  domyslnie 1000
 %   eps_1        - tolerancja na akceptacje pojedynczej wartosci wlasnej,
 %                  domyslnie 10^{-10}
 %   eps_2        - tolerancja na akceptacje 2 bliskich co do modułu
 %                  wartosci wlasnych, domyslnie 10^{-10}
-%   max_iter     - maksymalna liczba iteracji, po ktorej przekroczeniu
-%                  obliczenia zostana przerwane,
-%                  domyslnie 1000
 %
 % Wyjscie:
 %   w_wlasne - wektor znalezionych wartosci wlasnych macierzy A
@@ -85,7 +85,7 @@ while k <= max_iter && n > 2
         A_k = A_k(1:n, 1:n);
         k = 1;
     elseif abs(A_k(n-1, n-2)) < eps_2*abs(A_k(n, n-1))
-        w_wlasne(n-1, n) = my_eigen(A_k(n-1:n, n-1:n));
+        w_wlasne(n-1:n) = my_eigen(A_k(n-1:n, n-1:n));
         n = n-2;
         A_k = A_k(1:n, 1:n);
         k = 1;
@@ -96,6 +96,8 @@ if n == 2
     w_wlasne(1:2) = my_eigen(A_k);
 elseif n == 1
     w_wlasne(1) = my_eigen(1, 1);
+else
+    w_wlasne = w_wlasne(n+1:size(A, 1));
 end
 
 end % function
