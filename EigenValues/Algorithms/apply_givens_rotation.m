@@ -5,8 +5,8 @@ function [x, y] = apply_givens_rotation(c, s, x, y)
 % Rotacja policzona za pomoca funckji givens_rotation()
 %   bedzie zaaplikowana do pozostalych wartosci macierzy
 
-t=c*x+s*y;
-y = c*y - (s')*x;
+t = c*x+s*y;
+y = c*y-(s')*x;
 x = t;
 
 end

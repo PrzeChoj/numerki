@@ -19,18 +19,18 @@ elseif a == 0
     new_a = abs(b);
     new_b = 0;
 elseif abs(a) > abs(b)
-    t = b / a;
-    u = sign(a) * sqrt(1 + t * t);
-    c = 1 / u;
-    s = c * t;
-    new_a = a * u;
+    t = b/a;
+    u = sign(a) * sqrt(1+t*t);
+    c = 1/u;
+    s = c*t;
+    new_a = a*u;
     new_b = 0;
 else
-    t = a / b;
-    u = sign(b) * sqrt(1 + t * t);
-    s = 1 / u;
-    c = s * t;
-    new_a = b * u;
+    t = a/b;
+    u = sign(b)*sqrt(1+t*t);
+    s = 1/u;
+    c = s*t;
+    new_a = b*u;
     new_b = 0;
 end
 end

@@ -56,7 +56,16 @@ function [w_wlasne] = P2Z55_PCH_HessenQR(A, eps_1, eps_2, max_iter)
 %   odpowiednio optymalnie za posrednictwem wlasnej funkcji.
 % Sam podział przy pomocy qr_Givens jest rzędu o(n^2), czyli lepiej niż
 %   ogólny algorytm qr, który jest rzędu o(n^3).
-% 
+
+if ~exist('eps_1','var')
+    eps_1 = 1e-10;
+end
+if ~exist('eps_2','var')
+    eps_2 = 1e-10;
+end
+if ~exist('max_iter','var')
+    max_iter = 1000;
+end
 
 n = size(A, 1);
 w_wlasne = zeros(1, n);
@@ -67,18 +76,18 @@ norm_A = norm(A);
 
 while k <= max_iter && n > 2
     [c, s, R] = qr_Givens(A_k);
-    k = k + 1;
+    k = k+1;
     A_k = iloczyn(R, c, s);
 
-    if abs(A_k(n, n-1)) < eps_1 * norm_A
-        w_wlasne(n) = A_k(n,n);
+    if abs(A_k(n, n-1)) < eps_1*norm_A
+        w_wlasne(n) = A_k(n, n);
         n = n-1;
-        A_k = A_k(1:n,1:n);
+        A_k = A_k(1:n, 1:n);
         k = 1;
-    elseif abs(A_k(n-1,n-2)) < eps_2 * abs(A_k(n,n-1))
-        w_wlasne(n-1, n) = my_eigen(A_k(n-1:n,n-1:n));
+    elseif abs(A_k(n-1, n-2)) < eps_2*abs(A_k(n, n-1))
+        w_wlasne(n-1, n) = my_eigen(A_k(n-1:n, n-1:n));
         n = n-2;
-        A_k = A_k(1:n,1:n);
+        A_k = A_k(1:n, 1:n);
         k = 1;
     end
 end
@@ -86,13 +95,7 @@ end
 if n == 2
     w_wlasne(1:2) = my_eigen(A_k);
 elseif n == 1
-    w_wlasne(1) = my_eigen(1,1);
+    w_wlasne(1) = my_eigen(1, 1);
 end
 
 end % function
-
-
-
-
-
-
