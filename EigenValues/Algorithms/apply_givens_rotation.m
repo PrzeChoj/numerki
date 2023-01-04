@@ -6,7 +6,7 @@ function [x, y] = apply_givens_rotation(c, s, x, y)
 %   bedzie zaaplikowana do pozostalych wartosci macierzy
 
 t = c*x+s*y;
-y = c*y-(s')*x;
+y = c*y-conj(s)*x;
 x = t;
 
 end

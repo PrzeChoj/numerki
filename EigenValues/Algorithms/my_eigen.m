@@ -9,6 +9,6 @@ p = A(1,1)*A(2,2)-A(1,2)*A(2,1); % Wyznacznik
 m = (A(1,1)+A(2,2))/2;
 s = sqrt(m*m-p);
 
-eigs = [m+s, m-s];
+eigs = conj([m+s, m-s]);
 
 end

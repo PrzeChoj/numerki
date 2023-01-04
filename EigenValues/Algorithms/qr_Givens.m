@@ -9,7 +9,6 @@ function [c, s, R] = qr_Givens(A)
 H = A;
 
 [n, ~] = size(H);
-Q = eye(n);
 c = zeros(1, n-1);
 s = zeros(1, n-1);
 

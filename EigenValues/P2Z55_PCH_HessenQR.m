@@ -95,7 +95,7 @@ end
 if n == 2
     w_wlasne(1:2) = my_eigen(A_k);
 elseif n == 1
-    w_wlasne(1) = my_eigen(1, 1);
+    w_wlasne(1) = A_k(1, 1);
 else
     w_wlasne = w_wlasne(n+1:size(A, 1));
 end
