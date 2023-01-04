@@ -1,5 +1,6 @@
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues')
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues/Algorithms')
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues/tests')
 
 Źródła:
 1. https://en.wikipedia.org/wiki/Hessenberg_matrix
@@ -20,10 +21,9 @@ Uwagi:
 
 Testy:
 1. Ogólny, czy działa
-2. Specjalne prostrze przypadki - macierze rzeczywiste; symetryczne; rzeczywiste i symetryczne
-3. Specjalne trudniejsze przypadki - macierze z bliskimi sobie wartościami własnymi; bliskimi 0
-4. Macierze losowe
-5. Przykład gdy nie zbiegnie. 3 wartości własne o tym samym module; macierz permutacji (1,2,3,...,n); (1,2,3)(4)(5,6)... .
+2. Specjalne trudniejsze przypadki - macierze z bliskimi sobie wartościami własnymi; bliskimi 0
+3. Macierze losowe
+4. Przykład gdy nie zbiegnie. 3 wartości własne o tym samym module; macierz permutacji (1,2,3,...,n); (1,2,3)(4)(5,6)... .
 
 
 
