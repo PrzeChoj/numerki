@@ -57,6 +57,7 @@ function [w_wlasne] = P2Z55_PCH_HessenQR(A, max_iter, eps_1, eps_2)
 % Sam podział przy pomocy qr_Givens jest rzędu o(n^2), czyli lepiej niż
 %   ogólny algorytm qr, który jest rzędu o(n^3).
 
+% domyslne wartosci parametrow
 if ~exist('eps_1','var')
     eps_1 = 1e-10;
 end
@@ -67,24 +68,26 @@ if ~exist('max_iter','var')
     max_iter = 1000;
 end
 
+% poczatkowe wartosci zmiennych
 n = size(A, 1);
 w_wlasne = zeros(1, n);
 k = 1;
-
 A_k = A;
 norm_A = norm(A);
 
+% glowna pentla algorytmu
 while k <= max_iter && n > 2
+    % iteracja algorytmu QR:
     [c, s, R] = qr_Givens(A_k);
-    k = k+1;
     A_k = iloczyn(R, c, s);
+    k = k+1;
 
-    if abs(A_k(n, n-1)) < eps_1*norm_A
+    if abs(A_k(n, n-1)) < eps_1*norm_A % warunek na 1 w.w.
         w_wlasne(n) = A_k(n, n);
         n = n-1;
         A_k = A_k(1:n, 1:n);
         k = 1;
-    elseif abs(A_k(n-1, n-2)) < eps_2*abs(A_k(n, n-1))
+    elseif abs(A_k(n-1, n-2)) < eps_2*abs(A_k(n, n-1)) % warunek na 2 w.w.
         w_wlasne(n-1:n) = my_eigen(A_k(n-1:n, n-1:n));
         n = n-2;
         A_k = A_k(1:n, 1:n);
@@ -92,11 +95,11 @@ while k <= max_iter && n > 2
     end
 end
 
-if n == 2
+if n == 2 % zostaly 2 w.w. do policzenia
     w_wlasne(1:2) = my_eigen(A_k);
-elseif n == 1
+elseif n == 1 % zostalo 1 w.w. do policzenia
     w_wlasne(1) = A_k(1, 1);
-else
+else % skonczyl obliczenia, ale nie znalazl wszystkich w.w. :<
     w_wlasne = w_wlasne(n+1:size(A, 1));
 end
 
