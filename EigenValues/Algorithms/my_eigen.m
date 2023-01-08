@@ -11,4 +11,4 @@ s = sqrt(m*m-p);
 
 eigs = [m+s, m-s];
 
-end
+end % function

@@ -29,7 +29,9 @@ h = histogram(reshape(found_k_all,1,[]));
 set(gca,'yscale','log')
 ylim([0.1, 10000])
 xlabel("Liczba iteracji",'FontSize',20,'FontWeight','bold')
-ylabel("Ilość wystąpień danej liczby iteracji",'FontSize',20,'FontWeight','bold')
-title("Histogram liczby iteracji potrzbenej do znalezienia wartości własnej",'FontSize',30,'FontWeight','bold')
+ylabel("Ilość wystąpień danej liczby iteracji",'FontSize',20, ...
+    'FontWeight','bold')
+title("Histogram liczby iteracji potrzbenej do znalezienia " + ...
+    "wartości własnej",'FontSize',30,'FontWeight','bold')
 
 mean(reshape(found_k_all,1,[]) == 1)

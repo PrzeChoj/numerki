@@ -25,4 +25,4 @@ else
     new_b = 0;
 end
 
-end
+end % function

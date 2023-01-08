@@ -9,4 +9,4 @@ t = c*x+s*y;
 y = c*y-conj(s)*x;
 x = t;
 
-end
+end % function

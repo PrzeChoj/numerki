@@ -17,4 +17,4 @@ end
 
 are_equal = all(are_equal);
 
-end
+end % function

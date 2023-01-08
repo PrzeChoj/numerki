@@ -10,6 +10,7 @@ n = size(c, 2) + 1;
 Q = eye(n);
 
 for i=1:(n-1)
+    % Zapisanie pojedynczej macierzy Givensa
     Q_i = eye(n);
     Q_i(i,i) = c(i);
     Q_i(i,i+1) = -s(i);
@@ -22,4 +23,4 @@ end
 A = Q*R;
 B = R*Q;
 
-end
+end % function

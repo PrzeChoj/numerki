@@ -44,6 +44,8 @@ mean(was_last_elem_smallest)
 
 histogram(log10(val_last_elem(~ was_last_elem_smallest)), 100)
 line([-10,-10],[0,12], 'Color','red', 'LineWidth',5)
-xlabel("log10 z modułu ostatniej wartości z poddiagonali",'FontSize',20,'FontWeight','bold')
+xlabel("log10 z modułu ostatniej wartości z poddiagonali",'FontSize', ...
+    20,'FontWeight','bold')
 ylabel("Ilość wystąpień danej wartości",'FontSize',20,'FontWeight','bold')
-title("Histogram ostatniej wartości z poddiagonali, jeśli nie była najmniejsza",'FontSize',30,'FontWeight','bold')
+title("Histogram ostatniej wartości z poddiagonali, jeśli nie była" + ...
+    " najmniejsza",'FontSize',30,'FontWeight','bold')
