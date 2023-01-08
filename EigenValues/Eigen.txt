@@ -1,6 +1,7 @@
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues')
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues/Algorithms')
 addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues/tests')
+addpath('/Users/adam/Desktop/programiki.nosync/Numerki/EigenValues/NumericTests')
 
 Źródła:
 1. https://en.wikipedia.org/wiki/Hessenberg_matrix
@@ -26,6 +27,7 @@ Testy:
 4. Przykład gdy nie zbiegnie. 3 wartości własne o tym samym module; macierz permutacji (1,2,3,...,n); (1,2,3)(4)(5,6)... .
 
 1. Wykres jak dużo w.w. w zależności od iteracji
+2. Czy na pewno te ostatnie poddiagonale się najszybciej maleją?
 
 
 
