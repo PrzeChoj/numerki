@@ -9,7 +9,8 @@ max_iter = 100000000;
 found_k_all = zeros(M, n);
 
 for j=1:M
-    disp(j)
+    disp("Obliczono " + j/M*100 + " %");
+    
     U = rand(n);
     [Q, ~] = qr(U);
     eigs_true = rand(1, n)*2-1; % U(-1,1)
@@ -30,3 +31,5 @@ ylim([0.1, 10000])
 xlabel("Liczba iteracji",'FontSize',20,'FontWeight','bold')
 ylabel("Ilość wystąpień danej liczby iteracji",'FontSize',20,'FontWeight','bold')
 title("Histogram liczby iteracji potrzbenej do znalezienia wartości własnej",'FontSize',30,'FontWeight','bold')
+
+mean(reshape(found_k_all,1,[]) == 1)

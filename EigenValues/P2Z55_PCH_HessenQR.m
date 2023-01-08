@@ -89,13 +89,13 @@ while k <= max_iter && n > 2
         w_wlasne(n) = A_k(n, n);
         n = n-1;
         A_k = A_k(1:n, 1:n);
-        found_k(n+1) = k;
+        found_k(n+1) = k-1; % k bylo przed chwila zwiekszone
         k = 1;
     elseif abs(A_k(n-1, n-2)) < eps_2*abs(A_k(n, n-1)) % warunek na 2 w.w.
         w_wlasne(n-1:n) = my_eigen(A_k(n-1:n, n-1:n));
         n = n-2;
         A_k = A_k(1:n, 1:n);
-        found_k((n+1):(n+2)) = k;
+        found_k((n+1):(n+2)) = k-1; % k bylo przed chwila zwiekszone
         k = 1;
     end
 end
