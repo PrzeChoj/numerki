@@ -25,6 +25,8 @@ Testy:
 3. Macierze losowe
 4. Przykład gdy nie zbiegnie. 3 wartości własne o tym samym module; macierz permutacji (1,2,3,...,n); (1,2,3)(4)(5,6)... .
 
+1. Wykres jak dużo w.w. w zależności od iteracji
+
 
 
 EXP:

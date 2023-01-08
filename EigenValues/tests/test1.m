@@ -5,8 +5,8 @@ function [] = test1()
 % Sprawdza poprawnosc implementacji na przykladach
 % rzeczywistych jak i zespolonych.
 
-disp("Test sprawdza poprawnosc funkcji pomocniczych oraz " + ...
-    "funkcji glownej na przykladowych danych")
+disp("Test sprawdza poprawnosc funkcji pomocniczych oraz")
+disp("funkcji glownej na przykladowych danych")
 
 disp(" ")
 disp("Warto zauwazyc, ze MATLAB-owa funkcja hess() zwraca")
